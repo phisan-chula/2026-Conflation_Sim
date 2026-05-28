@@ -12,6 +12,23 @@ This document outlines the mathematical frameworks and operational differences b
 
 A global similarity transformation applies a single, uniform geometric adjustment across the entire spatial dataset. It preserves the exact shape of the geometries while minimizing the overall global root-mean-square error (RMSE) using a least-squares optimization across all control points.
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/GlobalSimilarity/RESULT/01_simulation_input.svg" width="280"><br>
+      <b>Figure A</b>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/GlobalSimilarity/RESULT/02_conflation_optimized.svg" width="280"><br>
+      <b>Figure B</b>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/GlobalSimilarity/RESULT/03_topological_snapped.svg" width="280"><br>
+      <b>Figure C</b>
+    </td>
+  </tr>
+</table>
+
 ### Mathematical Framework
 The transformation modifies coordinates using exactly **four parameters**: translation ($\Delta x, \Delta y$), rotation angle ($\theta$), and a uniform scale factor ($s$). 
 
@@ -62,19 +79,31 @@ $$
 * **The Result:** Shapes are perfectly preserved. Right angles remain exactly $90^\circ$, parallel lines stay parallel, and aspect ratios are invariant.
 * **The Limitation:** It cannot absorb localized distortions (e.g., localized soil settlement, non-uniform paper shrinkage, or localized survey inaccuracies). Localized errors are propagated across the entire dataset as high residual errors.
 
-<table>
-  <tr>
-    <td align="center"><img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/GlobalSimilarity/RESULT/01_simulation_input.svg" width="280"><br>Figure A</td>
-    <td align="center"><img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/GlobalSimilarity/RESULT/02_conflation_optimized.svg" width="280"><br>Figure B</td>
-    <td align="center"><img src="[c.svg](https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/4fa14f87cacdd7fadf475ca9e16a7bad0e955c7a/GlobalSimilarity/RESULT/03_topological_snapped.svg)" width="280"><br>Figure C</td>
-  </tr>
-
-
 ---
 
 ## 2. Local Similarity followed by Global Affine
 
 This is a non-rigid, multi-step optimization framework designed to isolate and eliminate localized discrepancies before standardizing the global coordinate trend.
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/01_simulation_input.svg" width="280"><br>
+      <b>Figure A</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/02_conflation_result.svg" width="280"><br>
+      <b>Figure B</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/03_conflation_result.svg" width="280"><br>
+      <b>Figure C</b>
+    </td>
+        <td align="center">
+      <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/04_vertex_conflation_result.svg" width="280"><br>
+      <b>Figure C</b>
+    </td>
+  </tr>
+</table>
 
 ### Step 1: Local Similarity Adjustment
 Geometries or discrete vertex clusters (such as individual boundary segments or separate parcel boundaries like Parcel 1 and Parcel 20) are optimized independently against immediate, local reference points. 
