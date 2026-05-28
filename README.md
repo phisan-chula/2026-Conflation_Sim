@@ -1,6 +1,6 @@
 # 2026-Parcel Conflation
 
-# Geometric Warping Approaches: Global Similarity vs. Hybrid Local-Global Affine
+# Geometric Warping Approaches: Global Similarity vs. Hybrid Local Similarity & Global Affine
 
 When rectifying historical land surveys, adjusting cadastral parcel layers, or matching legacy maps to a modern geodetic baseline, managing geometric distortions requires a deliberate trade-off between **global consistency** and **local accuracy**.
 
