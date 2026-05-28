@@ -16,7 +16,7 @@ A global similarity transformation applies a single, uniform geometric adjustmen
   <tr>
     <td align="center">
       <img src="https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/GlobalSimilarity/RESULT/01_simulation_input.svg" width="280"><br>
-      <b>L1 and L2 Parcels</b>
+      <b>Prepared L1 & L2 Parcels</b>
     </td>
     <td align="center">
       <img src="https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/GlobalSimilarity/RESULT/02_conflation_optimized.svg" width="280"><br>
