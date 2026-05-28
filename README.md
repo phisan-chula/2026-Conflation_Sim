@@ -88,19 +88,19 @@ This is a non-rigid, multi-step optimization framework designed to isolate and e
   <tr>
     <td align="center">
       <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/01_simulation_input.svg" width="280"><br>
-      <b>Figure A</b>
+      <b>Prepared L1&L2 Parcel</b>
     </td>
     <td align="center">
       <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/02_conflation_result.svg" width="280"><br>
-      <b>Figure B</b>
+      <b>Local Similarity with L2</b>
     </td>
     <td align="center">
       <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/03_conflation_result.svg" width="280"><br>
-      <b>Figure C</b>
+      <b>Global Affine with Aligned L2</b>
     </td>
         <td align="center">
       <img src="https://github.com/phisan-chula/2026-Conflation_Sim/blob/main/LocalSimi_GlobalAffi/RESULT_ID20/04_vertex_conflation_result.svg" width="280"><br>
-      <b>Figure C</b>
+      <b>Vertex Conflation</b>
     </td>
   </tr>
 </table>
