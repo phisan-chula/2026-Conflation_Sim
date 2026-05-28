@@ -62,6 +62,8 @@ $$
 * **The Result:** Shapes are perfectly preserved. Right angles remain exactly $90^\circ$, parallel lines stay parallel, and aspect ratios are invariant.
 * **The Limitation:** It cannot absorb localized distortions (e.g., localized soil settlement, non-uniform paper shrinkage, or localized survey inaccuracies). Localized errors are propagated across the entire dataset as high residual errors.
 
+![Topological Snapped Result](https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/4fa14f87cacdd7fadf475ca9e16a7bad0e955c7a/GlobalSimilarity/RESULT/03_topological_snapped.svg)
+
 ---
 
 ## 2. Local Similarity followed by Global Affine
