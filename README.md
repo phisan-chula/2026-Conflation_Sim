@@ -130,6 +130,8 @@ $$
 * **The Result:** Parallel lines stay parallel, but right angles can deform slightly ($\gamma \neq 0$) due to directional skew. 
 * **The Advantage:** Localized errors are neutralized effectively because they are resolved by the local step or absorbed by the non-uniform directional stretching ($s_x \neq s_y$) of the affine model.
 
+![Vertex Conflation Result (ID 20)](https://raw.githubusercontent.com/phisan-chula/2026-Conflation_Sim/main/LocalSimi_GlobalAffi/RESULT_ID20/04_vertex_conflation_result.svg)
+
 ---
 
 ## Key Differences at a Glance
