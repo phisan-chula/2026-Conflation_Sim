@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Multi-Stage Conflation Matrix Gallery</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 0; }
+        header { background-color: #1e293b; padding: 20px 30px; border-bottom: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h1 { margin: 0 0 8px 0; font-size: 22px; font-weight: 700; color: #38bdf8; }
+        p { margin: 0; font-size: 13px; color: #94a3b8; }
+        
+        .tab-bar { display: flex; background-color: #111827; padding: 8px 16px 0 16px; border-bottom: 1px solid #334155; gap: 4px; }
+        .tab-btn { background: none; border: 1px solid transparent; color: #94a3b8; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; border-top-left-radius: 6px; border-top-right-radius: 6px; transition: all 0.2s ease; }
+        .tab-btn:hover { color: #e2e8f0; background-color: #1e293b; }
+        .tab-btn.active { color: #38bdf8; background-color: #1e293b; border-color: #334155 #334155 transparent #334155; }
+        
+        .tab-content { display: none; padding: 30px; }
+        .tab-content.active { display: block; }
+        
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(650px, 1fr)); gap: 30px; max-width: 1920px; margin: 0 auto; }
+        @media(max-width: 1400px) { .matrix-grid { grid-template-columns: 1fr; } }
+        
+        .matrix-card { background-color: #1e293b; border: 1px solid #334155; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
+        .card-header { background-color: #111827; padding: 12px 16px; font-size: 13px; font-weight: 600; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        .badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-affine { background-color: #1e3a8a; color: #93c5fd; }
+        .badge-tps { background-color: #312e81; color: #c7d2fe; }
+        
+        .card-body { padding: 16px; background-color: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 520px; }
+        .vector-viewport { width: 100%; height: 520px; border: none; background-color: #ffffff; border-radius: 4px; }
+        
+        .action-tray { background-color: #1e293b; padding: 8px 16px; border-top: 1px solid #334155; display: flex; justify-content: flex-end; gap: 8px; }
+        .btn-action { font-size: 11px; color: #f1f5f9; text-decoration: none; padding: 4px 12px; border-radius: 4px; border: 1px solid #475569; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+        .btn-inspect { background-color: #334155; }
+        .btn-inspect:hover { background-color: #475569; color: #38bdf8; }
+        .btn-copy { background-color: #0369a1; border-color: #0284c7; font-weight: 600; }
+        .btn-copy:hover { background-color: #0284c7; color: #ffffff; }
+        .btn-copy.success { background-color: #15803d; border-color: #16a34a; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pipeline Multi-Stage Conflation Analysis Workspace</h1>
+    <p>Interactive verification matrix dashboard comparing configuration grids, spatial transformation engines, and localized weighting variances.</p>
+</header>
+
+<div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(event, 'step1')">📊 Step 1: Input Simulation</button>
+    <button class="tab-btn" onclick="switchTab(event, 'step2')">📊 Step 2: Local Similarity Alignment</button>
+    <button class="tab-btn" onclick="switchTab(event, 'step3')">📊 Step 3: Global Warp Framework</button>
+    <button class="tab-btn" onclick="switchTab(event, 'step4')">📊 Step 4: Topological Vertex Conflation</button>
+</div>
+
+<div id="step1" class="tab-content active">
+    <div class="matrix-grid">
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_1/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_1/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_1/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_10000/01_simulation_input.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_10000/01_simulation_input.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_10000/01_simulation_input.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step2" class="tab-content">
+    <div class="matrix-grid">
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_1/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_1/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_1/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_10000/02_alignment_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_10000/02_alignment_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_10000/02_alignment_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step3" class="tab-content">
+    <div class="matrix-grid">
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_1/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_1/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_1/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_10000/03_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_10000/03_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_10000/03_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step4" class="tab-content">
+    <div class="matrix-grid">
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_affine_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_affine_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_affine_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">CTx4 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_CTx4_tps_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_CTx4_tps_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_CTx4_tps_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_affine_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_affine_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_affine_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | CTx1 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_CTx1_tps_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_CTx1_tps_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_CTx1_tps_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 1</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | affine | 10000</strong></span>
+                <span class="badge badge-affine">Affine Regression</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_affine_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_affine_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_affine_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 1</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_1/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_1/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_1/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+        <div class="matrix-card">
+            <div class="card-header">
+                <span>📁 Config: <strong style="color: #e2e8f0;">L1x3 | tps | 10000</strong></span>
+                <span class="badge badge-tps">TPS (Spline)</span>
+            </div>
+            <div class="card-body">
+                <object class="vector-viewport" data="./RESULT_L1x3_tps_10000/04_vertex_conflation_result.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="action-tray">
+                <button class="btn-action btn-copy" onclick="copySvgToClipboard('./RESULT_L1x3_tps_10000/04_vertex_conflation_result.svg', this)">📋 Copy Vector (for MS Word)</button>
+                <a class="btn-action btn-inspect" href="./RESULT_L1x3_tps_10000/04_vertex_conflation_result.svg" target="_blank">🗖 Open in New Tab</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchTab(evt, tabId) {
+    var contents = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < contents.length; i++) { contents[i].className = contents[i].className.replace(" active", ""); }
+    var buttons = document.getElementsByClassName("tab-btn");
+    for (var i = 0; i < buttons.length; i++) { buttons[i].className = buttons[i].className.replace(" active", ""); }
+    document.getElementById(tabId).className += " active";
+    evt.currentTarget.className += " active";
+}
+
+async function copySvgToClipboard(svgUrl, buttonElement) {
+    try {
+        // Fetch the raw XML content of the SVG file
+        const response = await fetch(svgUrl);
+        if (!response.ok) throw new Error("Failed to fetch SVG resource.");
+        const svgText = await response.text();
+        
+        // Write the raw text code to clipboard
+        await navigator.clipboard.writeText(svgText);
+        
+        // Provide immediate visual feedback on the button
+        const originalText = buttonElement.innerHTML;
+        buttonElement.innerHTML = "✅ Copied Vector!";
+        buttonElement.classList.add("success");
+        
+        setTimeout(() => {
+            buttonElement.innerHTML = originalText;
+            buttonElement.classList.remove("success");
+        }, 2000);
+    } catch (err) {
+        console.error("Clipboard copy failed:", err);
+        alert("Failed to copy vector markup. Ensure you are running this page via an HTTP/local server context (CORS) or copy manually from 'Open in New Tab'.");
+    }
+}
+</script>
+</body>
+</html>

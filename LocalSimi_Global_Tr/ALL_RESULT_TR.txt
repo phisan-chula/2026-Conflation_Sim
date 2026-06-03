@@ -1,0 +1,1194 @@
+Reading configuration from: CONFIG/L1x3.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 0 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 0 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 18 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (12.096, 1.066)            | (10.000, 0.000)            | 1.0        | -1.3831    | -2.7277    | [L1 MATCH]
+109          | P2, P11, P12     | (12.144, 21.257)           | (10.000, 20.000)           | 1.0        | -0.4160    | -0.9356    | [L1 MATCH]
+111          | P4, P5, P14      | (41.409, 20.841)           | (43.000, 23.000)           | 1.0        | 1.0885     | 0.9398     | [L1 MATCH]
+119          | P5, P6, P16      | (51.815, 20.490)           | (53.000, 23.000)           | 1.0        | -0.1204    | 0.7234     | [L1 MATCH]
+101          | P11              | (2.733, 21.047)            | (0.000, 20.000)            | 1.0        | -0.3042    | -0.2637    | [L1 MATCH]
+112          | P14              | (42.258, 40.627)           | (43.000, 43.000)           | 1.0        | 1.1734     | 3.0565     | [L1 MATCH]
+11b          | P16              | (52.137, 41.136)           | (53.000, 43.000)           | 1.0        | 0.5741     | 2.0917     | [L1 MATCH]
+12c          | P29              | (92.208, 49.911)           | (94.000, 48.000)           | 1.0        | -1.0790    | -2.8740    | [L1 MATCH]
+12d          | P29, P39, P40    | (92.158, 69.468)           | (94.000, 68.000)           | 1.0        | -0.0388    | -0.5048    | [L1 MATCH]
+12n          | P40              | (101.850, 68.304)          | (104.000, 68.000)          | 1.0        | -0.5213    | 0.0486     | [L1 MATCH]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 0 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 0 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+==========================================================================================
+      CADASTER CONFLATION PIPELINE: MATRIX MATURATION SUITE
+==========================================================================================
+ Total Hardcoded Combinations Discovered: 12
+ Engine will complete a dry run profile overview before live processing loops begin.
+==========================================================================================
+
+ [PHASE 1/2] DISPLAYING PIPELINE COMBINATION MATRIX DRY RUN PREVIEW
+==========================================================================================
+Combination 1/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_affine_1
+
+------------------------------------------------------------------------------------------
+Combination 2/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_affine_10000
+
+------------------------------------------------------------------------------------------
+Combination 3/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_tps_1
+
+------------------------------------------------------------------------------------------
+Combination 4/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_tps_10000
+
+------------------------------------------------------------------------------------------
+Combination 5/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_CTx1_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_CTx1_affine_1
+
+------------------------------------------------------------------------------------------
+Combination 6/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_CTx1_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_CTx1_affine_10000
+
+------------------------------------------------------------------------------------------
+Combination 7/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_CTx1_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_CTx1_tps_1
+
+------------------------------------------------------------------------------------------
+Combination 8/12
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_CTx1_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_L1x3_CTx1_tps_10000
+
+------------------------------------------------------------------------------------------
+Combination 9/12
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_CTx4_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_CTx4_affine_1
+
+------------------------------------------------------------------------------------------
+Combination 10/12
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_CTx4_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_CTx4_affine_10000
+
+------------------------------------------------------------------------------------------
+Combination 11/12
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_CTx4_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_CTx4_tps_1
+
+------------------------------------------------------------------------------------------
+Combination 12/12
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_CTx4_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+  [DRY RUN] Would execute directory storage reallocation: mv ./RESULT -> ./RESULT_CTx4_tps_10000
+
+------------------------------------------------------------------------------------------
+
+ [DRY RUN VERIFIED CLEAR] Matrix initialization starting in 5 seconds...
+ Press Ctrl+C right now if you need to abort the run sequence.
+==========================================================================================
+
+ [PHASE 2/2] STARTING LIVE WORKSPACE COMPILATION PROCESSING RUNS
+==========================================================================================
+
+[RUNNING BLOCK 1/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_affine_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 2/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 0 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 18 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (12.041, 0.459)            | (10.000, 0.000)            | 1.0        | -0.8595    | -1.7156    | [L1 MATCH]
+109          | P2, P11, P12     | (12.364, 21.496)           | (10.000, 20.000)           | 1.0        | -0.5334    | -1.1517    | [L1 MATCH]
+111          | P4, P5, P14      | (42.652, 21.649)           | (43.000, 23.000)           | 1.0        | 0.0481     | 0.2949     | [L1 MATCH]
+119          | P5, P6, P16      | (51.641, 20.816)           | (53.000, 23.000)           | 1.0        | 0.3989     | 0.6443     | [L1 MATCH]
+101          | P11              | (1.491, 20.329)            | (0.000, 20.000)            | 1.0        | 1.0683     | 0.4333     | [L1 MATCH]
+112          | P14              | (42.714, 40.131)           | (43.000, 43.000)           | 1.0        | 0.5724     | 3.2297     | [L1 MATCH]
+11b          | P16              | (52.485, 40.704)           | (53.000, 43.000)           | 1.0        | 0.1309     | 2.2453     | [L1 MATCH]
+12c          | P29              | (91.182, 48.183)           | (94.000, 48.000)           | 1.0        | -0.0547    | -1.4645    | [L1 MATCH]
+12d          | P29, P39, P40    | (91.606, 68.802)           | (94.000, 68.000)           | 1.0        | 0.1499     | -0.5195    | [L1 MATCH]
+12n          | P40              | (102.051, 68.289)          | (104.000, 68.000)          | 1.0        | -1.0481    | -0.5322    | [L1 MATCH]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 0 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 0 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 0 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 18 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (12.865, 1.107)            | (10.000, 0.000)            | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+109          | P2, P11, P12     | (12.010, 20.876)           | (10.000, 20.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+111          | P4, P5, P14      | (41.749, 20.543)           | (43.000, 23.000)           | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+119          | P5, P6, P16      | (51.513, 21.257)           | (53.000, 23.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+101          | P11              | (1.704, 20.126)            | (0.000, 20.000)            | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+112          | P14              | (42.262, 40.894)           | (43.000, 43.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+11b          | P16              | (51.535, 40.021)           | (53.000, 43.000)           | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+12c          | P29              | (92.589, 48.929)           | (94.000, 48.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+12d          | P29, P39, P40    | (92.079, 68.980)           | (94.000, 68.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+12n          | P40              | (101.915, 68.296)          | (104.000, 68.000)          | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 0 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 0 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 0 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 18 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (11.812, 1.570)            | (10.000, 0.000)            | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+109          | P2, P11, P12     | (12.185, 21.039)           | (10.000, 20.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+111          | P4, P5, P14      | (42.046, 21.248)           | (43.000, 23.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+119          | P5, P6, P16      | (51.999, 20.639)           | (53.000, 23.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+101          | P11              | (1.016, 20.855)            | (0.000, 20.000)            | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+112          | P14              | (42.672, 40.415)           | (43.000, 43.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+11b          | P16              | (52.209, 40.255)           | (53.000, 43.000)           | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+12c          | P29              | (92.966, 49.444)           | (94.000, 48.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+12d          | P29, P39, P40    | (91.647, 68.920)           | (94.000, 68.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+12n          | P40              | (102.264, 68.475)          | (104.000, 68.000)          | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 0 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3_CTx1.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 1 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 1 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 19 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (11.716, 0.385)            | (10.000, 0.000)            | 1.0        | -0.7672    | -0.3799    | [L1 MATCH]
+109          | P2, P11, P12     | (12.286, 21.543)           | (10.000, 20.000)           | 1.0        | -0.9122    | -1.4317    | [L1 MATCH]
+111          | P4, P5, P14      | (42.002, 21.166)           | (43.000, 23.000)           | 1.0        | 0.8372     | 1.4275     | [L1 MATCH]
+119          | P5, P6, P16      | (52.270, 20.748)           | (53.000, 23.000)           | 1.0        | 0.0327     | 1.6654     | [L1 MATCH]
+101          | P11              | (1.967, 21.971)            | (0.000, 20.000)            | 1.0        | -0.0549    | -1.6777    | [L1 MATCH]
+112          | P14              | (41.543, 41.874)           | (43.000, 43.000)           | 1.0        | 1.7645     | 0.8418     | [L1 MATCH]
+11b          | P16              | (51.211, 40.647)           | (53.000, 43.000)           | 1.0        | 1.5734     | 1.8934     | [L1 MATCH]
+12c          | P29              | (92.620, 49.310)           | (94.000, 48.000)           | 1.0        | -0.7759    | -2.4408    | [L1 MATCH]
+12d          | P29, P39, P40    | (92.771, 68.450)           | (94.000, 68.000)           | 1.0        | -0.5248    | -1.4783    | [L1 MATCH]
+12n          | P40              | (102.154, 69.023)          | (104.000, 68.000)          | 1.0        | -0.3774    | -2.2112    | [L1 MATCH]
+12r          | P50              | (102.445, 116.643)         | (104.000, 121.000)         | 1.0        | 0.3385     | 3.4255     | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 1 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3_CTx1.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 1 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 1 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 19 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (11.658, 1.242)            | (10.000, 0.000)            | 1.0        | -0.5351    | -1.1568    | [L1 MATCH]
+109          | P2, P11, P12     | (12.084, 20.450)           | (10.000, 20.000)           | 1.0        | -0.9298    | -1.0670    | [L1 MATCH]
+111          | P4, P5, P14      | (41.604, 21.345)           | (43.000, 23.000)           | 1.0        | 1.1413     | 1.3629     | [L1 MATCH]
+119          | P5, P6, P16      | (52.160, 20.363)           | (53.000, 23.000)           | 1.0        | 0.0774     | 2.5087     | [L1 MATCH]
+101          | P11              | (1.285, 21.076)            | (0.000, 20.000)            | 1.0        | 0.3875     | -1.8466    | [L1 MATCH]
+112          | P14              | (42.669, 41.901)           | (43.000, 43.000)           | 1.0        | 0.0811     | 0.0623     | [L1 MATCH]
+11b          | P16              | (51.158, 41.268)           | (53.000, 43.000)           | 1.0        | 1.1839     | 0.8218     | [L1 MATCH]
+12c          | P29              | (92.792, 49.384)           | (94.000, 48.000)           | 1.0        | -1.4188    | -2.0891    | [L1 MATCH]
+12d          | P29, P39, P40    | (91.819, 68.931)           | (94.000, 68.000)           | 1.0        | -0.3462    | -2.3688    | [L1 MATCH]
+12n          | P40              | (101.133, 68.309)          | (104.000, 68.000)          | 1.0        | -0.1078    | -1.6101    | [L1 MATCH]
+12r          | P50              | (101.158, 117.872)         | (104.000, 121.000)         | 10000.0    | 0.0001     | 0.0005     | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 1 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3_CTx1.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 1 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 1 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 19 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (11.839, 0.983)            | (10.000, 0.000)            | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+109          | P2, P11, P12     | (12.181, 20.833)           | (10.000, 20.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+111          | P4, P5, P14      | (41.831, 20.783)           | (43.000, 23.000)           | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+119          | P5, P6, P16      | (51.458, 20.626)           | (53.000, 23.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+101          | P11              | (1.984, 20.100)            | (0.000, 20.000)            | 1.0        | 0.0000     | 0.0000     | [L1 MATCH]
+112          | P14              | (41.481, 41.685)           | (43.000, 43.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+11b          | P16              | (51.435, 41.346)           | (53.000, 43.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+12c          | P29              | (92.578, 49.479)           | (94.000, 48.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+12d          | P29, P39, P40    | (92.299, 68.957)           | (94.000, 68.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+12n          | P40              | (102.331, 69.416)          | (104.000, 68.000)          | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+12r          | P50              | (101.065, 116.432)         | (104.000, 121.000)         | 1.0        | 0.0000     | 0.0000     | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 1 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/L1x3_CTx1.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+          ID 1 matched -> Class OVERRIDE to L1 | Applying Shift: [-2.0, -1.0]
+          ID 15 matched -> Class OVERRIDE to L1 | Applying Shift: [1.0, 2.0]
+          ID 30 matched -> Class OVERRIDE to L1 | Applying Shift: [2.0, -1.0]
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-2.000, -1.000)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 1 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 86 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 86 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 1 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 19 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+108          | P2               | (12.141, 0.601)            | (10.000, 0.000)            | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+109          | P2, P11, P12     | (11.913, 20.431)           | (10.000, 20.000)           | 1.0        | -0.0000    | -0.0000    | [L1 MATCH]
+111          | P4, P5, P14      | (41.599, 20.880)           | (43.000, 23.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+119          | P5, P6, P16      | (51.408, 20.335)           | (53.000, 23.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+101          | P11              | (2.193, 21.303)            | (0.000, 20.000)            | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+112          | P14              | (42.715, 40.698)           | (43.000, 43.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+11b          | P16              | (51.752, 41.375)           | (53.000, 43.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+12c          | P29              | (91.386, 48.849)           | (94.000, 48.000)           | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+12d          | P29, P39, P40    | (92.629, 68.573)           | (94.000, 68.000)           | 1.0        | -0.0000    | 0.0000     | [L1 MATCH]
+12n          | P40              | (101.502, 69.566)          | (104.000, 68.000)          | 1.0        | 0.0000     | -0.0000    | [L1 MATCH]
+12r          | P50              | (102.166, 117.897)         | (104.000, 121.000)         | 10000.0    | 0.0000     | 0.0000     | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 1 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 12 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/CTx4.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-0.969, -0.996)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 4 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 88 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 88 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 4 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 5 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+100          | P1               | (1.165, 0.016)             | (-1.031, -2.004)           | 1.0        | 0.6263     | -0.4153    | [FIX_CONTROL]
+12j          | P10, P20         | (100.865, 20.973)          | (100.969, 20.996)          | 1.0        | -0.3178    | 0.2107     | [FIX_CONTROL]
+106          | P41              | (1.900, 97.663)            | (-1.031, 100.996)          | 1.0        | -0.6275    | 0.4160     | [FIX_CONTROL]
+12r          | P50              | (101.405, 117.153)         | (102.969, 120.996)         | 1.0        | 0.6368     | -0.4222    | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 4 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 0 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/CTx4.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-0.868, -0.991)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 4 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 88 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - GLOBAL WEIGHTED AFFINE REGRESSION
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 88 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 4 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 5 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+100          | P1               | (1.181, 0.869)             | (-1.132, -2.009)           | 10000.0    | 0.4023     | -0.6673    | [FIX_CONTROL]
+12j          | P10, P20         | (100.910, 20.490)          | (100.868, 20.991)          | 10000.0    | -0.2027    | 0.3362     | [FIX_CONTROL]
+106          | P41              | (0.745, 97.802)            | (-1.132, 100.991)          | 10000.0    | -0.3999    | 0.6634     | [FIX_CONTROL]
+12r          | P50              | (101.059, 116.781)         | (102.868, 120.991)         | 10000.0    | 0.4031     | -0.6686    | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 4 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 0 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/CTx4.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-0.839, -0.915)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 4 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 88 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 1.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 88 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 4 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 5 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+100          | P1               | (0.484, 0.121)             | (-1.161, -2.085)           | 1.0        | 0.0000     | -0.0000    | [FIX_CONTROL]
+12j          | P10, P20         | (101.447, 20.416)          | (100.839, 20.915)          | 1.0        | -0.0000    | 0.0000     | [FIX_CONTROL]
+106          | P41              | (0.946, 97.292)            | (-1.161, 100.915)          | 1.0        | -0.0000    | 0.0000     | [FIX_CONTROL]
+12r          | P50              | (101.004, 116.569)         | (102.839, 120.915)         | 1.0        | 0.0000     | -0.0000    | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 4 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 0 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+Reading configuration from: CONFIG/CTx4.toml...
+[PROCESS] Pass 1: Constructing contiguous structural grid layout baseline...
+[PROCESS] Pass 2: Tokenizing shared node topology database rules...
+[PROCESS] Pass 3: Applying custom [FIX_PARCEL] spatial shifts and class updates (Noise: +/-1.0m)...
+[PROCESS] Pass 4: Running origin boundary snapping verification matrix pass...
+          Detected structural workspace minimum boundary corner: (-0.931, -0.977)
+[EXPORT] Rendering high-resolution layout map graphics via PlotMap...
+[STAGE 1 COMPLETED] Process terminated successfully. Lower-bottom vertex is locked at (0,0).
+
+
+============================================================
+  STEP 2: LOCAL SIMILARITY ALIGNMENT ENGINE (VERTEX OPTIMIZED - L2 STRICT)
+============================================================
+[DATABASE IO] Opening stage 1 simulation workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/01_parcel_conflation_sim.gpkg
+[DATABASE IO] Loaded fix_control tracking 4 points to carry forward.
+[COMPUTE] Processing individual similarity transformations against L2 optimized targets...
+[COMPUTE] Calculating post-alignment error ellipses for L2 interactions...
+[COMPUTE] Compiling adjusted point features database registry...
+[COMPUTE] Successfully optimized 88 unique adjusted point records.
+[EXPORT] Writing layer 'aligned_parcels' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Writing point layer 'adjusted_vertices' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Forwarding point layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_alignment_result.svg
+[STAGE 2 COMPLETED] Local similarity alignment step successful.
+
+
+============================================================
+  STEP 3: HYBRID WARP ENGINE - THIN PLATE SPLINE (TPS) NON-LINEAR WARP
+  [CONFIGURATION] Fix Control Variable Weight: 10000.0
+  [ALERT] Thin Plate Spline acts as an exact local interpolator.
+          --> Individual control weights have NO EFFECT in TPS mode!
+  [CONFIGURATION] Verbose Reporting Mode: True
+============================================================
+[DATABASE IO] Opening input alignment workspace:
+  -> Path: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/02_parcel_conflation_aligned.gpkg
+[DATABASE IO] Opened adjusted vertices layer tracking 88 node locations.
+[DATABASE IO] Isolated FIX_CONTROL layer tracking 4 absolute anchor points.
+[COMPUTE] Fitting selected transformation strategy parameters over 5 coordinates...
+[COMPUTE] Mathematical model fitted successfully.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VERTEX_ID    | SHARING PARCELS  | SOURCE COORD (ADJUSTED)    | TARGET COORD (ANCHOR)      | WEIGHT     | vx (m)     | vy (m)     | LAYER CONTEXT
+-------------------------------------------------------------------------------------------------------------------------------------------------
+100          | P1               | (0.204, 0.000)             | (-1.069, -2.023)           | 10000.0    | -0.0000    | -0.0000    | [FIX_CONTROL]
+12j          | P10, P20         | (100.574, 21.762)          | (100.931, 20.977)          | 10000.0    | 0.0000     | 0.0000     | [FIX_CONTROL]
+106          | P41              | (1.363, 97.094)            | (-1.069, 100.977)          | 10000.0    | 0.0000     | -0.0000    | [FIX_CONTROL]
+12r          | P50              | (100.623, 116.593)         | (102.931, 120.977)         | 10000.0    | 0.0000     | 0.0000     | [FIX_CONTROL]
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMPUTE] L2 fabrics warped successfully. Class L1 protected completely.
+[EXPORT] Writing combined layer 'global_aligned' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Writing layer 'fix_control' into database: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+[EXPORT] Rendering high-resolution inspection map: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.png
+[EXPORT] Rendering lossless vector workspace sheet: /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_conflation_result.svg
+[STAGE 3 COMPLETED] Workspace database exported cleanly to /home/phisan/Project/2026-Conflation_DOL/2026-Conflation_Sim/LocalSimi_Global_Tr/RESULT/03_global_aligned.gpkg
+
+Reading compilation layer 'global_aligned' from: RESULT/03_global_aligned.gpkg...
+Isolated 'fix_control' anchor layer tracking 4 stations.
+Grouping vertex nodes and isolating Class L1 constant constraints...
+-> Locked 0 immutable anchor nodes from Class L1 data rows.
+Resolving final target coordinates with fallback centroid calculations...
+-> Target node mapping index successfully optimized.
+Modifying polygon edges and snaps... Reconstructing network geometries...
+-> Geometry reconstruction and edge modification completed successfully.
+Echoing graphics layout parameters... Sending data elements to PlotMap module...
+Preparing output data tables... Packaging structured attributes and geometries...
+Echoing file system call... Writing layer 'aligned_parcels' to database file: RESULT/04_vertex_conflation_final.gpkg...
+Forwarding layer 'fix_control' into database file: RESULT/04_vertex_conflation_final.gpkg...
+-> Production layer completely exported. Process terminated successfully.
+
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_affine_10000
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 3/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_tps_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 4/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_tps_10000
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 5/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_CTx1_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_CTx1_affine_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 6/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_CTx1_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_CTx1_affine_10000
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 7/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_L1x3_CTx1_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_CTx1_tps_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 8/12]
+▶ MATRIX STEP: Profile=CONFIG/L1x3_CTx1.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_L1x3_CTx1_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/L1x3_CTx1.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_L1x3_CTx1_tps_10000
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 9/12]
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=AFFINE | Weight=1
+  Expected Output Archive: ./RESULT_CTx4_affine_1
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_CTx4_affine_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 10/12]
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=AFFINE | Weight=10000
+  Expected Output Archive: ./RESULT_CTx4_affine_10000
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g affine -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_CTx4_affine_10000
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 11/12]
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=TPS | Weight=1
+  Expected Output Archive: ./RESULT_CTx4_tps_1
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 1 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_CTx4_tps_1
+
+------------------------------------------------------------------------------------------
+
+[RUNNING BLOCK 12/12]
+▶ MATRIX STEP: Profile=CONFIG/CTx4.toml | Mode=TPS | Weight=10000
+  Expected Output Archive: ./RESULT_CTx4_tps_10000
+    Executing: python 1_SimuParcel.py CONFIG/CTx4.toml
+    Executing: python 2_Local_Similarity.py
+    Executing: python 3_global_aff_tps.py -g tps -w 10000 -v
+    Executing: python 4_vertex_conflation.py
+✅ Success. Output compiled cleanly at ./RESULT_CTx4_tps_10000
+
+------------------------------------------------------------------------------------------
+
+>>> [POST-PROCESSING] Compiling Lossless Vector Inspection Dashboard...
+🎉 DASHBOARD FILE GENERATED: ./conflation_matrix_gallery.html (12 layers embedded into a 2-column matrix layout).
+
+==========================================================================================
+ 🎉 ALL 12 PIPELINE MATRIX JOBS EXECUTED SUCCESSFULLY
+ Total Compiling Time Elapsed: 128.99 seconds
+ Open 'conflation_matrix_gallery.html' in your web browser to check outputs.
+==========================================================================================
+
